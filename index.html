@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REGISTERATION FORM</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="container">
+        <form>
+            <div>
+                <h1 class="reg">register here</h1>
+            </div>
+            <br>
+            <div class="box">
+                <p class="message" id="message">please fill out the form</p>
+                <div>
+                    <label for="username">EMAIL</label>
+                    <input type="text" placeholder="username" id="username" onkeyup="getValue(event)" >
+                    <p class="err1" id="err1">enter valid username</p>
+                </div>
+                <br>
+                <div>
+                    <label for="password">PASSWORD</label>
+                    <input type="password" placeholder="password" id="password" onkeyup="getValuePswd(event)">
+                    <p class="err2" id="err2">enter valid password
+                        <b>(Must contain at least one number and one uppercase and lowercase letter, one special character and at least 8 or more characters)</b></p>
+                </div>
+                <br>
+
+                <div>
+                    <label for="firstname">FIRST NAME</label>
+                    <input type="text" placeholder="firstname" id="firstname">
+                </div>
+                <br>
+
+                <div>
+                    <label for="lastname">LAST NAME</label>
+                    <input type="text" placeholder="lastname" id="lastname">
+                </div>
+                <br>
+                <div class="btn">
+                    <button type="submit" class="btn_1" onclick="alert()">SUBMIT</button>
+                    <br>
+                    <button type="reset" class="btn_2" onclick="alert()">CANCEL</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+
+        let err1 = document.getElementById('err1');
+        let err2 = document.getElementById('err2');
+
+        let username =  document.getElementById('username');
+        let password = document.getElementById('password');
+        let firstname = document.getElementById('firstname').value;
+        let lastname = document.getElementById('lastname').value;
+       
+        
+        let emailRegX= /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        let passwordRegX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        
+        console.log(username);
+        console.log(password);
+        console.log(err1);
+        console.log(err2);
+
+        function getValue(e){
+            console.log(e.target.value);
+
+            username.innerText=e.target.value;
+
+            if (emailRegX.test(e.target.value)){
+                err1.style.visibility = 'hidden'
+            }
+            else
+            {
+                err1.style.visibility='visible'
+            }
+        }
+
+  function getValuePswd(e){
+    console.log(e.target.value);
+    
+            password.innerText=e.target.value;
+
+            if (passwordRegX.test(e.target.value)){
+                err2.style.visibility = 'hidden'
+            }
+            else
+            {
+                err2.style.visibility='visible'
+            }
+    
+        }
+
+    </script>
+</body>
+
+</html>
